@@ -3,20 +3,11 @@ package data_access;
 import se.ecutb.Omar.Ali.Course;
 import se.ecutb.Omar.Ali.Student;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class StudentDaoList implements  StudentDao {
     private static List<Student> students;
-
-
-    private Student findStudent(int id){
-        for (Student student: students) {
-            if (student.getId() == id) {
-                return student;
-            }
-        }
-        return null;
-    }
 
     @Override
     public Student saveStudent(Student student) {
@@ -60,13 +51,19 @@ public class StudentDaoList implements  StudentDao {
     @Override
     public List<Student> findAll() {
         for (Student student:students) {
-            }
-        return students;
+            return students;
+        }
+        return null;
     }
 
     @Override
     public boolean deleteStudent(Student student) {
-        students.remove(student);
+        for (Student removeStudent:students) {
+            if (removeStudent.getName().equals(student)) {
+                students.remove(removeStudent);
+            }
+        }
         return false;
     }
+
 }

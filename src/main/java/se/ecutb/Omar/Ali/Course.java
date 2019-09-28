@@ -10,13 +10,6 @@ public class Course {
     private int weekDuration;
     private List<Student> students;
 
-    public Course(int id, String courseNumber, LocalDate startDate, int weekDuration, List<Student> students) {
-        this.id = id;
-        this.courseName = courseNumber;
-        this.startDate = startDate;
-        this.weekDuration = weekDuration;
-        this.students = students;
-    }
 
     public int getId() {
         return id;
@@ -58,9 +51,23 @@ public class Course {
         this.students = students;
     }
     public void register(Student student){
-
+        if(!students.contains(student))
+        students.add(student);
+        System.out.println(student.getName() + "Registered!");
     }
     public void unregister(Student student){
+    students.remove(student);
+        System.out.println(student.getName() + "Unregistered!");
+    }
 
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", courseName='" + courseName + '\'' +
+                ", startDate=" + startDate +
+                ", weekDuration=" + weekDuration +
+                ", students=" + students +
+                '}';
     }
 }

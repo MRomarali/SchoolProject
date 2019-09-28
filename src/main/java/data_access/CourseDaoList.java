@@ -8,21 +8,13 @@ import java.util.List;
 
 public class CourseDaoList implements CourseDao {
     private static List<Course> courses;
-
-    private Course findCourse(int id){
-        for (Course course: courses) {
-            if (course.getId() == id) {
-                return course;
-            }
-        }
-        return null;
-    }
-
+    Student student = new Student();
 
     @Override
     public Course saveCourse(Course course) {
-        courses.add(course);
         if (courses.contains(course)) {
+            courses.add(course);
+            System.out.println(course.getCourseName() + "Added!");
             return course;
         }
         return null;
@@ -68,7 +60,13 @@ public class CourseDaoList implements CourseDao {
 
     @Override
     public boolean removeCourse(Course course) {
-        courses.remove(course);
+        for (Course deleteCourse:courses) {
+            if (deleteCourse.getCourseName().equals(course)) {
+                courses.remove(deleteCourse);
+                System.out.println(course.getCourseName() + "Deleted!");
+            }
+            return true;
+        }
         return false;
     }
 }

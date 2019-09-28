@@ -6,12 +6,6 @@ public class Student {
     private String email;
     private String address;
 
-    public Student(int id, String name, String email, String address) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.address = address;
-    }
 
     public int getId() {
         return id;
@@ -45,4 +39,13 @@ public class Student {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
