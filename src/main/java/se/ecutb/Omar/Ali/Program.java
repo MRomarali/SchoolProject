@@ -3,12 +3,11 @@ package se.ecutb.Omar.Ali;
 import data_access.CourseDao;
 import data_access.CourseDaoList;
 import data_access.StudentDaoList;
-
-import java.awt.event.AWTEventListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class Program {
 
@@ -20,15 +19,16 @@ public class Program {
     private static Scanner input = new Scanner(System.in);
 
     public static void welcome() {
-        System.out.println("Welcome to school management system\n" +
-                "=====================================\n" +
-                "\t\t\t\tType\n" +
-                "1: To Create new courses and students\n" +
-                "2: To Register and remove students to/from courses\n" +
-                "3: To Find students and courses\n" +
-                "4: To Edit students and courses\n" +
-                "====================================="
-        );
+            System.out.println("Welcome to school management system\n" +
+                    "=====================================\n" +
+                    "\t\t\t\tType\n" +
+                    "1: To Create new courses and students\n" +
+                    "2: To Register and remove students to/from courses\n" +
+                    "3: To Find students and courses\n" +
+                    "4: To Edit students and courses\n" +
+                    "====================================="
+
+            );
     }
 
     public static void program() {
@@ -67,16 +67,15 @@ public class Program {
                         student.setAddress(input.next());
                         System.out.println("Added " + student.toString() + "\n\n\n");
                     }
+                    welcome();
+                    choice = input.nextInt();
                     break;
                 case 2:
                     System.out.println("press r to register student and u to unregister");
                     choices = input.next();
                     if (choices.equals("r")) {
                         System.out.println("Register student with Email");
-                        choices = input.next();
-                        if (choices.equals(student.getEmail())) {
-                            course.register(student);
-                        }
+                        student.setEmail(input.next());
                         System.out.println(student.getEmail() + "registered");
                     }
                     if (choices.equals("u")) {
@@ -87,32 +86,35 @@ public class Program {
                         }
                         System.out.println(student.getEmail() + "unregistered");
                     }
+                    welcome();
+                    choice = input.nextInt();
                     break;
                 case 3:
                     System.out.println("press 9 to find courses and 10 to find students");
                     choice = input.nextInt();
                     if (choice == 9) {
+                        System.out.println(cao.findAll());
                         System.out.println("Search course by id");
                         choice = input.nextInt();
                         if (choice == course.getId()) {
-
                             System.out.println(course.toString());
                         }
-                        System.out.println(course.toString());
                     }
                     if (choice == 10) {
+                        System.out.println(sao.findAll());
                         System.out.println("Search student by id");
                         choice = input.nextInt();
-                        if (choice == student.getId()) {
-
+                        if (choice == student.getId())
+                        {
                             System.out.println(student.toString());
                         }
-                        System.out.println(student.toString());
                     }
+                    welcome();
+                    choice = input.nextInt();
                     break;
                 case 4:
                     System.out.println("press 11 to edit course and 12 to edit student");
-                    choices = input.next();
+                    choice = input.nextInt();
                     if (choice == 11) {
                         System.out.println("Edit course by Id");
                         choice = input.nextInt();
@@ -125,6 +127,7 @@ public class Program {
                             course.setWeekDuration(input.nextInt());
                             System.out.println("Edited " + course.toString() + "\n\n\n");
                         }
+                    }
                         if (choice == 12) {
                             System.out.println("Edit student by Id");
                             choice = input.nextInt();
@@ -138,9 +141,10 @@ public class Program {
                                 System.out.println("Edited" + student.toString() + "\n\n\n");
                             }
                         }
+                        welcome();
+                        choice = input.nextInt();
                         break;
-                    }
+                }
             }
         }
     }
-}
