@@ -1,14 +1,12 @@
 package data_access;
 
 import se.ecutb.Omar.Ali.Course;
-import se.ecutb.Omar.Ali.Student;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public class CourseDaoList implements CourseDao {
     private static List<Course> courses;
-    Student student = new Student();
 
     @Override
     public Course saveCourse(Course course) {

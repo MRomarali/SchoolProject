@@ -1,6 +1,5 @@
 package data_access;
 
-import se.ecutb.Omar.Ali.Course;
 import se.ecutb.Omar.Ali.Student;
 
 import java.lang.reflect.Array;
